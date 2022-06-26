@@ -1,1 +1,41 @@
+<%
+require 'csv'
+file = Dir["app/views/pages/*.csv"][0]
+all = CSV.read(file)
+head = all[1]
+csv = all.drop(1)
+%>
+<table>
+    <thead>
+        <tr>
+        <%head.each do |column|%>
+            <th><%=column%></th>
+        <%end%>
+        </tr>
+    </thead>
+    <tbody>
+        <%csv.each do |row|%>
+            <tr>
+            <%row.each do |entity|%>
+                <td><%=entity%></td>
+            <%end%>
+            </tr>
+        <%end%>
+</tbody>
+</table>
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Nachname</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Levin</td>
+            <td>Bauschke</td>
+        </tr>
+    </tbody>
+</table>
+
+
 <h1>Hello Enion!<h1>
